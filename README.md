@@ -1,191 +1,385 @@
-# Retail Inventory Demand Forecasting & Business Analytics Dashboard
+# 📊 Retail Inventory Demand Forecasting & Business Analytics
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)]()
-[![Status](https://img.shields.io/badge/status-in%20development-yellow)]()
-[![License](https://img.shields.io/badge/license-MIT-green)]()
-[![Framework](https://img.shields.io/badge/dashboard-Streamlit-red)]()
+[![Python](https://img.shields.io/badge/Python-3.10+-blue)]()
+[![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange)]()
+[![Dashboard](https://img.shields.io/badge/Dashboard-Streamlit-red)]()
+[![Status](https://img.shields.io/badge/Status-Complete-brightgreen)]()
 
-A production-style, end-to-end data science project that forecasts store-level
-retail demand and translates those forecasts into actionable inventory and
-business insights through an interactive analytics dashboard.
+An end-to-end Machine Learning and Business Analytics project that forecasts retail store sales and transforms predictions into actionable business insights through an interactive Streamlit dashboard.
 
-This repository is structured as a real analytics team would build it —
-separated data layers, a reusable feature/model pipeline, model versioning,
-and a decoupled presentation layer — rather than a single notebook.
+Unlike notebook-centric projects, this repository follows a modular, production-inspired architecture with separate data, feature engineering, modeling, visualization, and application layers.
 
 ---
 
-## 1. Project Overview
+# 📌 Project Overview
 
-Retail chains lose revenue in two directions: **overstocking** (capital tied up,
-markdowns, waste) and **understocking** (lost sales, poor customer experience).
-This project builds a demand forecasting system on historical store sales data
-and surfaces the results through a business-facing dashboard, enabling:
+Retail businesses constantly struggle with two major challenges:
 
-- Store-level daily demand forecasts
-- Promotion and holiday impact quantification
-- Competition-proximity impact analysis
-- Store-level demand volatility and stock-risk flagging
-- Full model transparency via feature importance and error analysis
+- Overstocking products, leading to increased storage costs and markdowns.
+- Understocking products, resulting in lost sales and poor customer experience.
 
-**Dataset:** [Rossmann Store Sales](https://www.kaggle.com/c/rossmann-store-sales) (Kaggle)
-— chosen for its combination of daily sales granularity, promotional events,
-holiday calendars, and store metadata (type, assortment, competition distance),
-which allows realistic feature engineering and business storytelling.
+This project develops an end-to-end demand forecasting system capable of predicting store-level daily sales while providing business stakeholders with interactive analytics for inventory planning and decision-making.
+
+The project covers the complete machine learning lifecycle:
+
+- Data Loading
+- Data Cleaning
+- Feature Engineering
+- Model Training
+- Hyperparameter Tuning
+- Model Evaluation
+- Sales Prediction
+- Interactive Business Dashboard
 
 ---
 
-## 2. Tech Stack
+# 📂 Dataset
 
-| Layer | Tools |
-|---|---|
-| Data manipulation | Pandas, NumPy |
-| Machine learning | Scikit-learn |
-| Model persistence | Joblib |
+**Dataset:** Rossmann Store Sales (Kaggle)
+
+The Rossmann dataset was selected because it closely resembles real-world retail forecasting problems by combining:
+
+- Daily historical sales
+- Promotional campaigns
+- School & state holidays
+- Competition information
+- Store metadata
+
+### Dataset Statistics
+
+| Metric | Value |
+|---------|------:|
+| Daily Sales Records | **1,017,209** |
+| Retail Stores | **1,115** |
+| Engineered Features | **43** |
+| Forecast Target | Daily Store Sales |
+
+---
+
+# 🛠 Tech Stack
+
+| Layer | Technologies |
+|--------|--------------|
+| Programming | Python |
+| Data Processing | Pandas, NumPy |
+| Machine Learning | Scikit-learn |
+| Model Persistence | Joblib |
 | Visualization | Plotly, Matplotlib |
-| Application / dashboard | Streamlit |
-| Testing | Pytest |
+| Dashboard | Streamlit |
 
 ---
 
-## 3. Repository Structure
+# 🏗 Project Architecture
 
+```text
+Raw Data
+     │
+     ▼
+Data Loading
+     │
+     ▼
+Data Merging
+     │
+     ▼
+Data Cleaning
+     │
+     ▼
+Feature Engineering
+     │
+     ▼
+Model Training
+     │
+     ▼
+Hyperparameter Tuning
+     │
+     ▼
+Model Evaluation
+     │
+     ▼
+Prediction Pipeline
+     │
+     ▼
+Interactive Streamlit Dashboard
 ```
-retail-demand-forecasting/
+
+---
+
+# 📁 Repository Structure
+
+```text
+Retail-Inventory-Forecast/
+
 │
-├── data/                   # Data storage layer (never committed except .gitkeep)
-│   ├── raw/                # Original, immutable source files
-│   ├── interim/            # Merged / partially cleaned data
-│   ├── processed/          # Final model-ready datasets
-│   └── external/           # Supplementary reference data (e.g. holiday calendars)
-│
-├── notebooks/              # Exploratory analysis and experimentation only
-│
-├── src/                    # Production source code (importable package)
-│   ├── config.py           # Centralized paths, constants, and settings
-│   ├── data/                # Data loading, merging, cleaning
-│   ├── features/            # Feature engineering and encoding logic
-│   ├── models/               # Training, prediction, evaluation, model registry
-│   ├── visualization/        # Reusable chart-building functions
-│   └── utils/                 # Shared helpers (logging, timing, etc.)
-│
-├── pipeline/               # End-to-end orchestration script
-│   └── run_pipeline.py      # load → clean → engineer → train → evaluate → serialize
-│
-├── models/                 # Model artifact storage
-│   ├── trained/              # Serialized model files (.joblib)
-│   └── metrics/               # Model registry log and evaluation metrics
-│
-├── app/                    # Streamlit dashboard application
-│   ├── Home.py               # App entry point
-│   ├── pages/                 # Individual dashboard pages
-│   └── components/            # Shared UI components (sidebar, KPI cards, charts)
-│
-├── tests/                  # Unit tests for data, features, and models
-│
-├── reports/                # Exported analysis artifacts
-│   └── figures/              # Saved charts for documentation/portfolio use
-│
-├── requirements.txt
-├── .gitignore
+├── app.py
 ├── README.md
-└── LICENSE
+├── requirements.txt
+│
+├── src/
+│   ├── config.py
+│   ├── data/
+│   ├── features/
+│   ├── models/
+│   └── visualization/
+│
+├── models/
+│   └── trained/
+│
+├── reports/
+│   └── figures/
+│
+├── notebooks/
+│
+└── data/
+    ├── raw/
+    ├── interim/
+    ├── processed/
+    └── external/
 ```
 
 ---
 
-## 4. Folder Responsibilities
+# ⚙️ Feature Engineering
 
-| Folder | Purpose |
-|---|---|
-| `data/raw/` | Immutable source data exactly as downloaded from Kaggle. Never modified in place. |
-| `data/interim/` | Output of merging and cleaning steps — not yet feature-engineered. |
-| `data/processed/` | Final, model-ready datasets, including train/validation/test splits. |
-| `data/external/` | Any auxiliary reference data brought in beyond the core Kaggle dataset. |
-| `notebooks/` | Scratch space for EDA and experimentation. Code that becomes reusable is migrated into `src/`. |
-| `src/data/` | Scripted, repeatable data loading, merging, and cleaning logic. |
-| `src/features/` | Feature construction (lags, rolling statistics, calendar features) and categorical encoders. |
-| `src/models/` | Model training, inference, evaluation, and a lightweight model registry for version tracking. |
-| `src/visualization/` | Chart-generation functions shared between notebooks and the Streamlit app. |
-| `src/utils/` | Cross-cutting utilities such as logging configuration and timing decorators. |
-| `pipeline/` | Single orchestration entry point that reproduces the entire workflow end-to-end. |
-| `models/trained/` | Serialized, versioned model artifacts ready for inference. |
-| `models/metrics/` | Persisted evaluation metrics and the model registry log. |
-| `app/` | The Streamlit multi-page dashboard that consumes processed data and trained models. |
-| `tests/` | Automated checks for data integrity, feature correctness, and model behavior. |
-| `reports/figures/` | Static exported visuals for documentation and portfolio use. |
+The pipeline automatically creates meaningful time-series features, including:
 
----
+### Calendar Features
 
-## 5. Project Status
+- Year
+- Month
+- Week
+- Day
+- Weekday
 
-This repository is under active development. Current stage: **repository
-scaffolding and configuration complete** — data ingestion, feature
-engineering, modeling, and the dashboard are implemented in subsequent
-milestones.
+### Lag Features
 
-| Milestone | Status |
-|---|---|
-| Repository scaffolding & configuration | ✅ Complete |
-| Data loading & cleaning pipeline | ⏳ Pending |
-| Feature engineering | ⏳ Pending |
-| Model training & evaluation | ⏳ Pending |
-| Streamlit dashboard | ⏳ Pending |
-| Testing suite | ⏳ Pending |
-| Deployment | ⏳ Pending |
+- Previous Day Sales
+- 7-Day Lag
+- 14-Day Lag
+- 30-Day Lag
+
+### Rolling Statistics
+
+- 7-Day Rolling Mean
+- 30-Day Rolling Mean
+- Rolling Standard Deviation
+
+### Business Features
+
+- Competition Duration
+- Promotion Duration
+- Promotional Month Indicator
+
+### Additional Features
+
+- Cyclical Date Encoding
+- Log-transformed Sales Target
 
 ---
 
-## 6. Getting Started
+# 🤖 Machine Learning Pipeline
 
-### Prerequisites
-- Python 3.10+
-- pip
+The project compares multiple regression models before selecting the best-performing model.
 
-### Setup
+### Models Evaluated
+
+- Baseline Mean Regressor
+- Linear Regression
+- Random Forest Regressor
+- HistGradientBoosting Regressor
+
+Hyperparameter tuning is performed using **RandomizedSearchCV**, and models are evaluated using a time-based train-validation split suitable for forecasting problems.
+
+---
+
+# 📈 Model Evaluation
+
+The trained models are evaluated using multiple regression metrics:
+
+- RMSE (Root Mean Squared Error)
+- MAE (Mean Absolute Error)
+- MAPE (Mean Absolute Percentage Error)
+- R² Score
+
+The project also generates:
+
+- Actual vs Predicted Plot
+- Residual Plot
+- Residual Distribution
+
+These visualizations help assess both predictive accuracy and model reliability.
+
+---
+
+# 📊 Dashboard Features
+
+The Streamlit dashboard provides:
+
+- 📈 Sales Forecasting
+- 📊 Exploratory Data Analysis
+- 📉 Model Performance Metrics
+- 🏬 Store-level Analytics
+- 📋 Business Insights
+- 📥 Prediction Interface
+
+---
+
+# 🖼 Dashboard Preview
+
+> *(Screenshots will be added here.)*
+
+Suggested screenshots:
+
+- Home Dashboard
+- Exploratory Data Analysis
+- Model Performance
+- Prediction Page
+- Business Insights
+
+---
+
+# 📌 Project Status
+
+| Component | Status |
+|------------|--------|
+| Data Loading | ✅ |
+| Data Cleaning | ✅ |
+| Feature Engineering | ✅ |
+| Model Training | ✅ |
+| Hyperparameter Tuning | ✅ |
+| Model Evaluation | ✅ |
+| Prediction Pipeline | ✅ |
+| Streamlit Dashboard | ✅ |
+| GitHub Repository | ✅ |
+| Deployment | 🔄 Planned |
+
+---
+
+# 🚀 Installation
+
+Clone the repository
 
 ```bash
-# Clone the repository
-git clone https://github.com/<your-username>/retail-demand-forecasting.git
-cd retail-demand-forecasting
+git clone https://github.com/thepoojashinde/Retail-Inventory-Forecast.git
+```
 
-# Create and activate a virtual environment
-python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
+Move into the project
 
-# Install dependencies
+```bash
+cd Retail-Inventory-Forecast
+```
+
+Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Activate it
+
+### macOS / Linux
+
+```bash
+source .venv/bin/activate
+```
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-### Data Setup
+---
 
-Download the [Rossmann Store Sales dataset](https://www.kaggle.com/c/rossmann-store-sales)
-from Kaggle and place `train.csv`, `test.csv`, and `store.csv` into `data/raw/`.
+# 📂 Dataset Setup
+
+Download the **Rossmann Store Sales** dataset from Kaggle and place:
+
+- `train.csv`
+- `store.csv`
+- `test.csv`
+
+inside:
+
+```text
+data/raw/
+```
+
+The remaining datasets are automatically generated by the pipeline.
 
 ---
 
-## 7. Running the Project
+# ▶️ Running the Project
 
-> Pipeline and app entry points will become executable once the corresponding
-> modules are implemented in later milestones.
+### Train the model
 
 ```bash
-# Run the full data-to-model pipeline (once implemented)
-python pipeline/run_pipeline.py
+python -m src.models.train_model
+```
 
-# Launch the dashboard (once implemented)
-streamlit run app/Home.py
+### Evaluate the model
+
+```bash
+python -m src.models.evaluate_model
+```
+
+### Generate predictions
+
+```bash
+python -m src.models.predict_model --input data/processed/featured_data.csv
+```
+
+### Launch the dashboard
+
+```bash
+streamlit run app.py
 ```
 
 ---
 
-## 8. License
+# 💼 Business Value
 
-This project is licensed under the MIT License.
+This project demonstrates how machine learning can support retail decision-making by enabling:
+
+- Accurate sales forecasting
+- Better inventory planning
+- Reduced stock shortages
+- Lower overstock costs
+- Promotion effectiveness analysis
+- Store-level performance monitoring
 
 ---
 
-## 9. Author
+# 🚀 Future Improvements
 
-Developed as a portfolio project demonstrating end-to-end data science
-engineering practices for analytics and data science roles.
+Potential future enhancements include:
+
+- XGBoost and LightGBM model comparison
+- Deep Learning forecasting (LSTM)
+- Automated retraining pipeline
+- Cloud deployment
+- Docker support
+- CI/CD integration
+- REST API for real-time forecasting
+
+---
+
+# 👩‍💻 Author
+
+## Pooja Shinde
+
+**B.Tech Computer Science Engineering**
+
+Maulana Azad National Institute of Technology (MANIT), Bhopal
+
+GitHub:
+https://github.com/thepoojashinde
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
