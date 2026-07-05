@@ -225,7 +225,37 @@ The Streamlit dashboard provides:
 
 # 🖼 Dashboard Preview
 
+<<<<<<< HEAD
 > *(Screenshots will be added here.)*
+=======
+## 🏠 Home
+
+![Home Dashboard](assets/home.png)
+
+---
+
+## 📊 Exploratory Data Analysis
+
+![EDA](assets/eda.png)
+
+---
+
+## 📈 Model Performance
+
+![Performance](assets/performance.png)
+
+---
+
+## 📉 Predictions
+
+![Predictions](assets/predictions.png)
+
+---
+
+## 💼 Business Insights
+
+![Business Insights](assets/insights.png)
+>>>>>>> b27b1ac (Improve README and add dashboard screenshots)
 
 Suggested screenshots:
 
