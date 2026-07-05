@@ -478,12 +478,27 @@ def render_about_page() -> None:
         )
 
     with st.expander("👤 Author & GitHub"):
-        st.markdown(
-            "**Author:** _Add your name here_\n\n"
-            "**GitHub:** _Add your repository link here_\n\n"
-            "Feel free to explore the source code, open issues, or reach out with "
-            "questions about the modeling approach."
-        )
+        st.markdown("""
+           ## 👩‍💻 About the Author
+
+           **Pooja Shinde**
+
+           B.Tech Computer Science Engineering  
+           Maulana Azad National Institute of Technology (MANIT), Bhopal
+
+           Passionate about Machine Learning, Data Science, and AI, with a strong interest in building end-to-end data-driven applications that solve real-world business problems.
+
+           🔗 GitHub  
+              https://github.com/thepoojashinde
+
+           💼 LinkedIn  
+              https://www.linkedin.com/in/the-pooja-shinde/
+
+           📧 Email  
+              poojashindeps213@gmail.com
+
+           ⭐ Thanks for exploring this project!
+           """)
 
 
 def main() -> None:
