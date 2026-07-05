@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Streamlit cache
+.streamlit/
+
+# Large datasets
+data/raw/
+data/interim/
+data/processed/
+
+# Model artifacts
+models/trained/*.joblib
+
+# Logs
+*.log
+
+# Python cache
+.pytest_cache/
+
+# Build
+build/
+dist/
+
+# Environment
+.env
+
+data/raw/*
+data/interim/*
+data/processed/*
