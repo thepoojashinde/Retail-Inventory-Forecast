@@ -416,6 +416,9 @@ Maulana Azad National Institute of Technology (MANIT), Bhopal
 GitHub:
 https://github.com/thepoojashinde
 
+🌐 Live Demo:
+https://retail-inventory-forecast-guargtc3tpyzsivmwusgz9.streamlit.app/
+
 ---
 
 ⭐ If you found this project useful, consider giving it a star!
