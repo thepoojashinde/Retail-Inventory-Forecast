@@ -5,6 +5,16 @@
 [![Dashboard](https://img.shields.io/badge/Dashboard-Streamlit-red)]()
 [![Status](https://img.shields.io/badge/Status-Complete-brightgreen)]()
 
+## 🌐 Live Demo
+
+**🔗 Streamlit App:**  
+https://retail-inventory-forecast-guargtc3tpyzsivmwusgz9.streamlit.app/
+
+**💻 GitHub Repository:**  
+https://github.com/thepoojashinde/Retail-Inventory-Forecast
+
+---
+
 An end-to-end Machine Learning and Business Analytics project that forecasts retail store sales and transforms predictions into actionable business insights through an interactive Streamlit dashboard.
 
 Unlike notebook-centric projects, this repository follows a modular, production-inspired architecture with separate data, feature engineering, modeling, visualization, and application layers.
